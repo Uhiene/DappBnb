@@ -13,13 +13,13 @@ const Room = () => {
   const [comments] = useGlobalState("comments");
   const [appartment] = useGlobalState("appartment");
 
-  useEffect(() => {
-    loadAppartment(id)
+  useEffect(async() => {
+    await loadAppartment(id)
   },[])
   return (
     <div className="py-8 px-10 sm:px-20 md:px-32">
       <RoomHeader name={appartment?.name} />
-      <RoomGrid />
+      <RoomGrid images={appartment?.images.split(",")} />
       <RoomDeescription
         description={appartment?.description}
         rooms={appartment?.rooms}
@@ -64,12 +64,13 @@ const RoomHeader = ({name}) => {
   );
 };
 
-const RoomGrid = () => {
+const RoomGrid = ({first, second, third, forth, fifth}) => {
+  console.log(images.length)
   return (
     <div className="mt-8 flex rounded-2xl overflow-hidden">
       <div className="md:w-1/2 w-full">
         <img
-          src="https://a0.muscache.com/im/pictures/prohost-api/Hosting-25477982/original/15476a26-c048-4f7b-9449-b52afb1249f4.jpeg?"
+          src="https://a0.muscache.com/im/pictures/prohost-api/Hosting-25477982/original/7a12acd5-5d9d-4c35-b8f8-d7b9cfb98c63.jpeg"
           alt=""
           className="h-full"
         />
